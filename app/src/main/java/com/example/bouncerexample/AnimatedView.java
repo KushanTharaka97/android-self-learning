@@ -43,7 +43,13 @@ public class AnimatedView extends AppCompatImageView implements View.OnTouchList
         Paint p = new Paint();
 
         p.setColor(Color.BLACK);
-        x+=vx; y+=vy;
+        x += vx;
+        y += vy;
+        if ((x - 20) <= 0 || (x + 20) > getWidth())
+            vx = -vx;
+        if ((y - 20) <= 0 || (y + 20) > getHeight())
+            vy = -vy;
+
         canvas.drawCircle(x, y, 40, p);
         h.postDelayed(r, 15);
     }
